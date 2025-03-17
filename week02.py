@@ -1,4 +1,17 @@
 #alt + shift +F10
-n = int(input("정수 입력: "))
-result = n*(n+1) // 2 #O(1) 1~n까지의 합을 구하는 공식
-print(result)
+import random
+
+#n = int(input("숫자: "))
+answer = random.randrange(1,100)
+
+i = 0
+while i < 7:
+    i = i+1
+    n = int(input("숫자: "))
+    if n == answer:
+        print("win")
+        break
+    elif n < answer:
+        print("작음")
+    elif n > answer:
+        print("큼")
