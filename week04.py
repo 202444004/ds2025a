@@ -16,6 +16,16 @@ class LinkedList:
             current = current.link
         current.link = Node(data)
 
+    #def is_find(self, target):
+    def search(self, target):
+        current = self.head
+        while current.link:
+            if target == current.link:
+                return f"{target}을 찾았습니다."
+            else:
+                current = current.link
+        return f"{target}은 리스트 안에 존재하지 않습니다."
+
     def __str__(self):
         current = self.head
         result = ""
