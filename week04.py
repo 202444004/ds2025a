@@ -1,4 +1,3 @@
-import random
 from re import search
 
 
@@ -20,6 +19,18 @@ class LinkedList:
             current = current.link
         current.link = Node(data)
 
+    def remove(self, target):
+        if self.head == target:
+            self.head = self.head.link
+            return
+        current = self.head
+        previous = None
+        while current:
+            if self.head.data == target:
+                previous.link = current.link
+            previous = current
+            current = current.link
+
     #def is_find(self, target):
     def search(self, target):
         current = self.head
@@ -40,12 +51,8 @@ class LinkedList:
         #return "Linked List"
 
 ll = LinkedList()
-for _ in range(20):
-    ll.append(random.randint(1, 30))
+ll.append(8)
+ll.append(10)
+ll.append(-9)
+#ll.remove(8)
 print(ll)
-print(ll.search(10))
-
-#ll.append(8)
-#ll.append(10)
-#ll.append(-9)
-#print(ll)
