@@ -20,14 +20,17 @@ class LinkedList:
         current.link = Node(data)
 
     def remove(self, target):
+        current = self.head
         if self.head == target:
             self.head = self.head.link
+            current.link = None
             return
-        current = self.head
+
         previous = None
         while current:
             if self.head.data == target:
                 previous.link = current.link
+                current.link = None
             previous = current
             current = current.link
 
@@ -54,5 +57,8 @@ ll = LinkedList()
 ll.append(8)
 ll.append(10)
 ll.append(-9)
-#ll.remove(8)
+print(ll.search(99))
+print(ll.search(10))
+ll.remove(10)
+ll.remove(77)
 print(ll)
