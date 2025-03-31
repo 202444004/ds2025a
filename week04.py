@@ -37,7 +37,7 @@ class LinkedList:
     #def is_find(self, target):
     def search(self, target):
         current = self.head
-        while current.link:
+        while current:
             if target == current.link:
                 return f"{target}을 찾았습니다."
             else:
