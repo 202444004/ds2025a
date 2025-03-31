@@ -9,7 +9,7 @@ class LinkedList:
 
     def append(self, data):
         if not self.head:
-            self.head = None(data)
+            self.head = Node(data)
             return
         current = self.head
         while current.link:
@@ -18,9 +18,9 @@ class LinkedList:
 
     def __str__(self):
         current = self.head
+        result = ""
         while current is not None:
-            print(current.data)
-            result = result + str(current.data) + "->"
+            result = result + f"{current.data} + -> "
             current = current.link
         return result + "END"
         #return "Linked List"
