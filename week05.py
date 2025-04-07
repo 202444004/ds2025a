@@ -25,9 +25,16 @@ class Stack:
         self.top = self.top.link #^^
         return popped_node.data
 
+    def peek(self):
+        return self.top.data #^^
+
 s1 = Stack()
-print(s1.pop())
+#print(s1.pop())
 s1.push("Data structure")
 s1.push("Database")
-print(s1.pop())
-print(s1.pop())
+s1.pop()
+print(s1.peek())
+#print(s1.pop())
+#print(s1.pop())
+for i in range(2):
+    print(s1.pop())
