@@ -1,3 +1,6 @@
+from queue import Queue
+
+
 class Node:
     def __init__(self, data, link = None):
         self.data = data
@@ -33,9 +36,9 @@ class Queue:
         return temp.data
 
 
-q = Quene()
-q.enquene("DataStructure")
-q.enquene("DataBase")
+q = Queue()
+q.enqueue("DataStructure")
+q.enqueue("DataBase")
 print(q.size, q.front.data, q.rear.data)
 print(q.dequeue())
 print(q.size, q.front.data, q.rear.data)
