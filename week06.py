@@ -25,6 +25,7 @@ class Queue:
             raise IndexError("Queue가 비어있음.")
         self.size = self.size - 1
         temp = self.front
+        temp.link = None;
         self.front = self.front.link
 
         if self.front is None:
