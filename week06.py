@@ -3,13 +3,13 @@ class Node:
         self.data = data
         self.link = link
 
-class Quene:
+class Queue:
     def __init__(self):
         self.front = None
         self.rear = None
         self.size = 0
 
-    def enquene(self, data):
+    def enqueue(self, data):
         self.size = self.size + 1
         node = Node(data)
         if self.rear is None:
@@ -17,9 +17,25 @@ class Quene:
             self.rear = node
         else:
             self.rear.link = node
-            self.rear = node
+            self.rear = node    #move
+
+
+    def dequeue(self):
+        if self.front is None:
+            raise IndexError("Queue가 비어있음.")
+        self.size = self.size - 1
+        temp = self.front
+        self.front = self.front.link
+
+        if self.front is None:
+            self.rear = None
+        return temp.data
+
 
 q = Quene()
 q.enquene("DataStructure")
 q.enquene("DataBase")
 print(q.size, q.front.data, q.rear.data)
+print(q.dequeue())
+print(q.size, q.front.data, q.rear.data)
+print(q.dequeue())
