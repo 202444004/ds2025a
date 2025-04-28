@@ -28,31 +28,35 @@ def post_order(node):
         post_order(node.right)
         print(node.data, end="")
 
+def insert(root, value):
+
+
 if __name__ == "__main__":
-    numbers = [10, 15, 8, 3, 9]
+    numbers = [10, 15, 8, 3, 9, 100, 7, 13]
     root = None
 
     node = TreeNode()
     node.data = numbers[0] #10
     root = node
 
-    for number in numbers[1:]:
-        node = TreeNode()
-        node.data = number
-
-        current = root
-        while True:
-            if number < current.data:
-                if current.left is None:
-                    current.left = node
-                    break
-                current = current.left
-            else:
-                if current.right is None:
-                    current.right = node
-                    break
-                current = current.right
-
+    for number in numbers:
+        root = insert(root, number)
     print('BST 구성완료')
-
     pre_order(root)
+
+    find_number = int(input())
+    current = root
+    while True:
+        if find_number == current.data:
+            print(f"{find_number}을(를) 찾았습니다")
+            break
+        elif find_number < current.data:
+            if current.left is None:
+                print(f"{find_number}이(가) 존재하지 않습니다")
+                break
+            current = current.left
+        else:
+            if current.right is None:
+                print(f"{find_number}이(가) 존재하지 않습니다")
+                break
+            current = current.right
