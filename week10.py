@@ -66,6 +66,24 @@ def insert(root, value):
             current = current.right  # 이동
     return root
 
+def delete(node, value):
+    if node is None:
+        return None
+
+    if value < node.data:
+        node.left = delete(node.left, value)
+
+    elif value > node.data:
+        node.right = delete(node.right, value)
+
+    else:
+        if node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+
+    return node
+
 
 if __name__ == "__main__":
     numbers = [10, 15, 8, 3, 9, 100, 7, 13]
@@ -75,6 +93,10 @@ if __name__ == "__main__":
         root = insert(root, number)
 
     print('BST 구성 완료')
+    pre_order(root)
+    print()
+    in_order(root)
+    print()
     post_order(root)
     print()
     find_number = int(input("찾는 수는? "))
@@ -82,3 +104,6 @@ if __name__ == "__main__":
         print(f"{find_number}을(를) 찾았습니다")
     else:
         print(f"{find_number}이(가) 존재하지 않습니다")
+
+    delete_number = int(input("제거할 수는? "))
+    root = delete(root, delete_number)
