@@ -10,6 +10,7 @@ graph = [
    # A  B  C  D  E  F  G  H
     #D-B-A-C-E-F-G-H
     #C-A-B-D-E-F-G-H
+    #H-G-D-B-A-C-E-F
 ]
 
 def dfs(g, i, visited):
@@ -19,7 +20,12 @@ def dfs(g, i, visited):
         if g[i][j] == 1 and not visited[j]: #중요
             dfs(g, j, visited)
 
+def bfs(g, i, visited):
+    pass
 
 visited_dfs = [False for _ in range(len(graph))]
-dfs(graph, 2, visited_dfs)
+visited_bfs = [0 for _ in range(len(graph))]
+dfs(graph, 3, visited_dfs)
+print()
+bfs(graph, 4, visited_bfs)
 
