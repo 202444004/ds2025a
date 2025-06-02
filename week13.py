@@ -14,35 +14,19 @@ def print_graph(g) :
 		print()
 	print()
 
-def find_vertex(g, city) :
-	stack = list()
-	visited_cities = list()
 
-	i = 0
-	stack.append(i)
-	visited_cities.append(i)
+def dfs(g, current, visited):
+    visited.append(current)
+    for vertex in range(graph_size):
+        if g.graph[current][vertex] > 0 and vertex not in visited:
+            dfs(g, vertex, visited)
 
-	while stack:
-		next = None
-		for j in range(graph_size):
-			if g.graph[i][j] != 0:
-				if j in visited_cities:
-					pass
-				else:
-					next = j
-					break
 
-		if next is not None:
-			i = next
-			stack.append(i)
-			visited_cities.append(i)
-		else:
-			i = stack.pop()
-
-	if city in visited_cities:
-		return True
-	else :
-		return False
+def find_vertex(g, city):
+    # visited_cities = [False for _ in range(graph_size)]
+    visited_cities = list()
+    dfs(g, 0, visited_cities)
+    return city in visited_cities
 
 
 g1 = None
@@ -78,7 +62,7 @@ for i in range(1, len(edges), 2):
 print(new_ary)
 
 index = 0
-while len(new_ary) > graph_size - 1:	# 간선의 개수가 '정점 개수-1'일 때까지 반복
+while len(new_ary) > graph_size - 1:
 	start = new_ary[index][1]
 	end = new_ary[index][2]
 	save_cost = new_ary[index][0]
@@ -96,14 +80,14 @@ while len(new_ary) > graph_size - 1:	# 간선의 개수가 '정점 개수-1'일 
 		g1.graph[end][start] = save_cost
 		index = index + 1
 
-print('최소 비용')
+print('MST 도로 연결도')
 print_graph(g1)
 
 total_cost = 0
 for i in range(graph_size):
-	for k in range(graph_size):
-		if g1.graph[i][k] != 0:
-			total_cost = total_cost + g1.graph[i][k]
+	for j in range(graph_size):
+		if g1.graph[i][j] != 0:
+			total_cost = total_cost + g1.graph[i][j]
 
 total_cost = total_cost // 2
 print(f"최소 비용 :  {total_cost}")
